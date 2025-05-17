@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2em;
+    background: #f8f8f8;
+}
+
+h1 {
+    color: #333;
+}
+
+ul#movie-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul#movie-list>li {
+    background: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+ul#movie-list>li:hover {
+    background: #f0f0f0;
+}
+
+.extra-text {
+    margin-top: 8px;
+    font-size: 0.95em;
+    color: #555;
+}

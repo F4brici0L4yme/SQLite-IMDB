@@ -11,14 +11,32 @@ const db = new sqlite3.Database(path.join(__dirname, 'project', 'db', 'imdb.db')
 
 app.get('/api/movies', (req, res) => {
     db.all('select * from movie', [], (err, rows) => {
-        if(err) {
+        if (err) {
             console.err(err);
-            res.status(500).json({ error: 'Error en la lectura de la DB'})
+            res.status(500).json({ error: 'Error en la lectura de la DB' })
         } else {
             res.json(rows);
         }
     })
 })
+
+app.get('/api/movies/:id/actors', (req, res) => {
+    const movieId = req.params.id;
+    const query = `
+    SELECT a.ActorId, a.Name
+    FROM Casting c
+    JOIN Actor a ON a.ActorId = c.ActorId
+    WHERE c.MovieID = ?
+    ORDER BY c.Ordinal
+  `;
+    db.all(query, [movieId], (err, rows) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error en la base de datos' });
+        }
+        res.json(rows);
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
