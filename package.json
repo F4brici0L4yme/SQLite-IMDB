@@ -1,0 +1,25 @@
+{
+  "name": "sqlite-imdb",
+  "version": "1.0.0",
+  "description": "F4bricioDev</>",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F4brici0L4yme/SQLite-IMDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/F4brici0L4yme/SQLite-IMDB/issues"
+  },
+  "homepage": "https://github.com/F4brici0L4yme/SQLite-IMDB#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}
