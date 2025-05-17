@@ -50,7 +50,7 @@ function toggleCasting(clickedLi) {
                 extra.dataset.loaded = true;
             })
             .catch(err => {
-                extra.innerHTML = 'Error al cargar actores.';
+                extra.innerHTML = 'Error al cargar actores';
                 console.error(err);
             });
     }
