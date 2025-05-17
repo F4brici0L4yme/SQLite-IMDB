@@ -5,11 +5,24 @@ fetch('/api/movies')
     })
     .then(data => {
         console.log(data);
-        const tbody = document.querySelector('#tabla tbody');
+        const movieList = document.querySelector('#movie-list');
         data.forEach(p => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${p.Title}</td><td>${p.Year}</td><td>${p.Score}</td>`;
-            tbody.appendChild(tr);
+            const movieListItem = document.createElement('li');
+            movieListItem.innerHTML = `<li onclick= "toggleCasting(this)">${p.Title}
+            <div class="extra-text" style="display: none;">Detalles de la película 1</div>
+            </li>`;
+            movieList.appendChild(movieListItem);
         });
     })
     .catch(err => console.error('Fetch error:', err));
+
+function toggleCasting(clickedLi) {
+    document.querySelectorAll('#movie-list .extra-text').forEach(div => {
+        if (div !== clickedLi.querySelector('.extra-text')) {
+            div.style.display = 'none';
+        }
+    });
+
+    const extra = clickedLi.querySelector('.extra-text');
+    extra.style.display = (extra.style.display === 'block') ? 'none' : 'block';
+}
