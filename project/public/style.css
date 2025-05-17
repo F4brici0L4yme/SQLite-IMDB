@@ -1,33 +1,73 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 2em;
-    background: #f8f8f8;
-}
-
-h1 {
-    color: #333;
-}
-
-ul#movie-list {
-    list-style: none;
+* {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
 }
 
-ul#movie-list>li {
-    background: white;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #d9e1e9;
+    color: #333;
+    padding: 2rem;
+    line-height: 1.6;
 }
 
-ul#movie-list>li:hover {
-    background: #f0f0f0;
+h1, h2 {
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+ul#movie-list, ul#actor-movie-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+ul li:hover {
+    background-color: #f0f0f0;
 }
 
 .extra-text {
-    margin-top: 8px;
-    font-size: 0.95em;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
     color: #555;
+}
+
+a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #005fa3;
 }

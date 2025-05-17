@@ -27,8 +27,8 @@ app.get('/api/movies/:id/actors', (req, res) => {
     FROM Casting c
     JOIN Actor a ON a.ActorId = c.ActorId
     WHERE c.MovieID = ?
-    ORDER BY c.Ordinal
-  `;
+    ORDER BY c.Ordinal`;
+
     db.all(query, [movieId], (err, rows) => {
         if (err) {
             console.error(err);
@@ -38,7 +38,6 @@ app.get('/api/movies/:id/actors', (req, res) => {
     });
 });
 
-// Obtener películas de un actor por ID
 app.get('/api/actors/:id/movies', (req, res) => {
     const actorId = req.params.id;
     const query = `
@@ -46,8 +45,8 @@ app.get('/api/actors/:id/movies', (req, res) => {
     FROM Casting c
     JOIN Movie m ON m.MovieID = c.MovieID
     WHERE c.ActorId = ?
-    ORDER BY m.Year DESC
-  `;
+    ORDER BY m.Year DESC`;
+    
     db.all(query, [actorId], (err, rows) => {
         if (err) {
             console.error(err);

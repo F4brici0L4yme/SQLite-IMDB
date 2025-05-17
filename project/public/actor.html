@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Películas del Actor</title>
+    <title>SQLite Project</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -15,7 +15,6 @@
 
     <script src="actor.js"></script>
     <script>
-        // Obtener el parámetro actorId de la URL
         const urlParams = new URLSearchParams(window.location.search);
         const actorId = urlParams.get('id');
         const actorName = urlParams.get('name');
@@ -41,7 +40,7 @@
             });
 
         function goBack() {
-            window.location.href = '/index.html';
+            window.location.href = '../';
         }
 
     </script>
