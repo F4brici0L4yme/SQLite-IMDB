@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Películas del Actor</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <button onclick="goBack()">← Volver al inicio</button>
+    <h1 id="actor-name">Películas de este actor</h1>
+    <ul id="actor-movie-list"></ul>
+
+    <script src="actor.js"></script>
+    <script>
+        // Obtener el parámetro actorId de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const actorId = urlParams.get('id');
+        const actorName = urlParams.get('name');
+
+        document.getElementById('actor-name').textContent = `Películas de ${actorName}`;
+
+        fetch(`/api/actors/${actorId}/movies`)
+            .then(res => res.json())
+            .then(movies => {
+                const list = document.getElementById('actor-movie-list');
+                if (movies.length === 0) {
+                    list.innerHTML = '<li>No se encontraron películas para este actor.</li>';
+                } else {
+                    movies.forEach(m => {
+                        const li = document.createElement('li');
+                        li.textContent = `${m.Title} (${m.Year}) - Score: ${m.Score}`;
+                        list.appendChild(li);
+                    });
+                }
+            })
+            .catch(err => {
+                console.error('Error al cargar películas del actor:', err);
+            });
+
+        function goBack() {
+            window.location.href = '/index.html';
+        }
+
+    </script>
+</body>
+
+</html>

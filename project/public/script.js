@@ -42,7 +42,9 @@ function toggleCasting(clickedLi) {
                     extra.innerHTML = 'No hay actores registrados.';
                 } else {
                     extra.innerHTML = '<ul>' +
-                        actors.map(actor => `<li>${actor.Name}</li>`).join('') +
+                        actors.map(actor =>
+                            `<li><a href="actor.html?id=${actor.ActorId}&name=${encodeURIComponent(actor.Name)}">${actor.Name}</a></li>`
+                        ).join('') +
                         '</ul>';
                 }
                 extra.dataset.loaded = true;

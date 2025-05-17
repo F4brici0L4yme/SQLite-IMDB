@@ -38,6 +38,26 @@ app.get('/api/movies/:id/actors', (req, res) => {
     });
 });
 
+// Obtener películas de un actor por ID
+app.get('/api/actors/:id/movies', (req, res) => {
+    const actorId = req.params.id;
+    const query = `
+    SELECT m.MovieID, m.Title, m.Year, m.Score
+    FROM Casting c
+    JOIN Movie m ON m.MovieID = c.MovieID
+    WHERE c.ActorId = ?
+    ORDER BY m.Year DESC
+  `;
+    db.all(query, [actorId], (err, rows) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error en la base de datos' });
+        }
+        res.json(rows);
+    });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
